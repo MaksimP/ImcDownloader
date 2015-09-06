@@ -18,7 +18,12 @@ public class ToolsAction extends AbstractAction {
                  }*/
             case "About" :
                 System.out.println("dialog");
-                JOptionPane.showMessageDialog(null, "<html>О программе<br>Программа написана</html>");
+                JOptionPane.showMessageDialog(null, "<html>О программе<br>" +
+                        "ImcDownloader для скачивания и просмотра каталога элементов<br>" +
+                        "с сайта магазина ООО НПП \"ИНТЕГРАЛЬНЫЕ МИКРОСИСТЕМЫ\"<br>" +
+                        "http://www.ims-kharkov.narod.ru/<br>" +
+                        "Все пожелания о программе писать на<br>" +
+                        "maksimp86@mail.ru</html>");
 
                 break;
             case "Close" :
