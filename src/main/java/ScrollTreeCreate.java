@@ -1,11 +1,11 @@
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class CreateScrollTree extends JScrollPane {
+public class ScrollTreeCreate extends JScrollPane {
 
     JTree tree_files;
 
-    public CreateScrollTree() {
+    public ScrollTreeCreate() {
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Список каталогов");
 
@@ -14,6 +14,7 @@ public class CreateScrollTree extends JScrollPane {
         }
 
         tree_files = new JTree(root);
+        setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setViewportView(tree_files);
     }
 }

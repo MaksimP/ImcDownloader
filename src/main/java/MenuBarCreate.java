@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CreateMenuBar extends JMenuBar {
+public class MenuBarCreate extends JMenuBar {
 
     JMenu menu_file;
     JMenu menu_options;
@@ -13,7 +13,7 @@ public class CreateMenuBar extends JMenuBar {
     JMenuItem menuItem_about;
     ToolsAction toolsAction;
 
-    public CreateMenuBar() {
+    public MenuBarCreate() {
         toolsAction = new ToolsAction();
         menu_file = new JMenu("Файл");
         menu_options = new JMenu("Опции");
@@ -40,6 +40,4 @@ public class CreateMenuBar extends JMenuBar {
         add(menu_options);
         add(menu_help);
     }
-
-
 }

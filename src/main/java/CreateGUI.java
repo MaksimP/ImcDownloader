@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class CreateGUI extends JFrame{
 
-    CreateToolBar toolBar;
+    ToolBarCreate toolBar;
 
     public CreateGUI() {
 
@@ -13,16 +13,16 @@ public class CreateGUI extends JFrame{
         setLayout(new BorderLayout());
 
         //main_menu_bar = new JMenuBar();
-        setJMenuBar(new CreateMenuBar());
+        setJMenuBar(new MenuBarCreate());
 
-        toolBar = new CreateToolBar();
+        toolBar = new ToolBarCreate();
 
         add(toolBar, BorderLayout.NORTH);
-        add(new CreateScrollTree(), BorderLayout.WEST);
+        add(new ScrollTreeCreate(), BorderLayout.WEST);
+        add(new ViewPanelCreate());
+        add(new LineStatusCreate(), BorderLayout.SOUTH);
         //add(new CreateSplitPane());
 
         setVisible(true);
-
-
     }
 }

@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateToolBar extends JToolBar{
+public class ToolBarCreate extends JToolBar{
 
     JButton button_reload;
     JButton button_open;
@@ -9,7 +9,7 @@ public class CreateToolBar extends JToolBar{
     JTextField textField_find;
     ToolsAction toolsAction;
 
-    public CreateToolBar() {
+    public ToolBarCreate() {
         toolsAction = new ToolsAction();
         ImageIcon image_reload = new ImageIcon("src/main/resources/arrow_refresh.png");
         ImageIcon image_find = new ImageIcon("src/main/resources/find.png");
