@@ -4,6 +4,7 @@ import java.awt.*;
 public class CreateGUI extends JFrame{
 
     ToolBarCreate toolBar;
+    ScrollTreeCreate scrollTreeCreate;
 
     public CreateGUI() {
 

@@ -11,13 +11,15 @@ public class ToolsAction extends AbstractAction {
             case "Reload" :
                 Thread thread_download = new Thread(new Download());
                 thread_download.start();
+                while (thread_download.isAlive()) {
+
+                }
                 break;
                  /*if (!thread_download.isAlive()) {
                      System.out.println("end");
                      break;
                  }*/
             case "About" :
-                System.out.println("dialog");
                 JOptionPane.showMessageDialog(null, "<html>О программе<br>" +
                         "ImcDownloader для скачивания и просмотра каталога элементов<br>" +
                         "с сайта магазина ООО НПП \"ИНТЕГРАЛЬНЫЕ МИКРОСИСТЕМЫ\"<br>" +
