@@ -2,7 +2,9 @@ import javax.swing.*;
 
 public class LineStatusCreate extends JPanel {
 
-    public LineStatusCreate() {
+    JLabel stutus_line;
 
+    public LineStatusCreate() {
+        stutus_line = new JLabel();
     }
 }

@@ -7,6 +7,7 @@ public class ToolsAction extends AbstractAction {
     public void actionPerformed(ActionEvent actionEvent) {
         String command = actionEvent.getActionCommand();
 
+
         switch (command) {
             case "Reload" :
                 Thread thread_download = new Thread(new Download());
