@@ -1,3 +1,5 @@
+package imcdownloader.Model;
+
 public class ListFiles {
 
     static private String[] list_file = {

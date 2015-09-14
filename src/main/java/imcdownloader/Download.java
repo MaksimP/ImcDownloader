@@ -1,3 +1,7 @@
+package imcdownloader;
+
+import imcdownloader.Model.ListFiles;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

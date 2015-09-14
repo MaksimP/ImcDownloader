@@ -1,3 +1,7 @@
+package imcdownloader.Veiw;
+
+import imcdownloader.Controller.ControllerAction;
+
 import javax.swing.*;
 
 public class MenuBarCreate extends JMenuBar {
@@ -9,25 +13,25 @@ public class MenuBarCreate extends JMenuBar {
     JMenuItem menuItem_close;
     JMenuItem menuItem_reload;
     JMenuItem menuItem_about;
-    ToolsAction toolsAction;
+    ControllerAction controllerAction;
 
     public MenuBarCreate() {
-        toolsAction = new ToolsAction();
+        controllerAction = new ControllerAction();
         menu_file = new JMenu("Файл");
         menu_options = new JMenu("Опции");
         menu_help = new JMenu("Помощь");
 
         menuItem_close = new JMenuItem("Закрыть");
         menuItem_close.setActionCommand("Close");
-        menuItem_close.addActionListener(toolsAction);
+        menuItem_close.addActionListener(controllerAction);
 
         menuItem_reload = new JMenuItem("Обновить каталог");
         menuItem_reload.setActionCommand("Reload");
-        menuItem_reload.addActionListener(toolsAction);
+        menuItem_reload.addActionListener(controllerAction);
 
         menuItem_about = new JMenuItem("О программе");
         menuItem_about.setActionCommand("About");
-        menuItem_about.addActionListener(toolsAction);
+        menuItem_about.addActionListener(controllerAction);
 
         menu_file.add(menuItem_close);
         menu_options.add(menuItem_reload);

@@ -1,8 +1,12 @@
+package imcdownloader.Controller;
+
+import imcdownloader.Download;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 
-public class ToolsAction extends AbstractAction {
+public class ControllerAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String command = actionEvent.getActionCommand();

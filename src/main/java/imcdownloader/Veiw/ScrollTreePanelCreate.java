@@ -1,3 +1,7 @@
+package imcdownloader.Veiw;
+
+import imcdownloader.Model.ListFiles;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 

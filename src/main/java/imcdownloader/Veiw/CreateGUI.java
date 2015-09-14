@@ -1,3 +1,5 @@
+package imcdownloader.Veiw;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +23,7 @@ public class CreateGUI extends JFrame{
 
         add(toolBar, BorderLayout.NORTH);
         add(new ScrollTreePanelCreate(), BorderLayout.WEST);
-       // add(new ViewPanelCreate());
+       // add(new imcdownloader.Veiw.ViewPanelCreate());
         add(new LineStatusCreate(), BorderLayout.SOUTH);
         //add(new CreateSplitPane());
 

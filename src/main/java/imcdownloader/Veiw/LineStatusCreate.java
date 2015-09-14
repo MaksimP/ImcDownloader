@@ -1,3 +1,5 @@
+package imcdownloader.Veiw;
+
 import javax.swing.*;
 
 public class LineStatusCreate extends JPanel {
