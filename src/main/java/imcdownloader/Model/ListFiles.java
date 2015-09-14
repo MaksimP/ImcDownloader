@@ -1,6 +1,9 @@
 package imcdownloader.Model;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ListFiles {
 
@@ -30,6 +33,17 @@ public class ListFiles {
         list_files.put("s_import.xls", "кнопки имп");
         list_files.put("s_sovok.xls", "кнопки сов");
         list_files.put("s_sovok.xls", "кнопки сов");
+        list_files.put("other.xls", "предохранители");
+        list_files.put("pribor.xls", "приборы(сов)");
+        list_files.put("multimetr.xls", "измерительная техника");
+        list_files.put("hl.xls", "индикаторы");
+        list_files.put("opto.xls", "оптроны");
+        list_files.put("korpus.xls", "корпуса");
+        list_files.put("krepezh.xls", "крепеж");
+        list_files.put("material.xls", "материалы");
+        list_files.put("instrument.xls", "инструменты");
+        list_files.put("power.xls", "источники питания");
+
     }
 
     static private String[] list_file = {
@@ -66,6 +80,47 @@ public class ListFiles {
             "instrument.xls",
             "power.xls"
     };
+
+    static private String[] list_file_names = {
+            "микросхемы(имп)",
+            "микросхемы(сов)",
+            "транзисторы(имп)",
+            "транзисторы(сов)",
+            "диоды(имп)",
+            "диоды(сов)",
+            "конденсаторы smd",
+            "конденсаторы",
+            "резисторы",
+            "резисторы smd",
+            "резисторы прецизионные",
+            "резисторы мощные",
+            "резисторы нелинейные",
+            "резисторы переменные",
+            "реле",
+            "резонаторы",
+            "индуктивности",
+            "разьемы имп",
+            "разьемы сов",
+            "панельки",
+            "кнопки имп",
+            "кнопки сов",
+            "кнопки сов",
+            "предохранители",
+            "приборы(сов)",
+            "измерительная техника",
+            "индикаторы",
+            "оптроны",
+            "корпуса",
+            "крепеж",
+            "материалы",
+            "инструменты",
+            "источники питания",
+    };
+
+    static void ttt() {
+        Set<Map.Entry<String, String>> set_list = list_files.entrySet();
+
+    }
 
     static public String[] getList_file() {
         return list_file;
