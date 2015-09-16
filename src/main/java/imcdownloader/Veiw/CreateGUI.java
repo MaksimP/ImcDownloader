@@ -6,7 +6,7 @@ import java.awt.*;
 public class CreateGUI extends JFrame{
 
     ToolBarCreate toolBar;
-    ScrollTreePanelCreate scrollTreeCreate;
+    TreePanelCreate scrollTreeCreate;
 
     public CreateGUI() {
 
@@ -22,10 +22,11 @@ public class CreateGUI extends JFrame{
         toolBar = new ToolBarCreate();
 
         add(toolBar, BorderLayout.NORTH);
-        add(new ScrollTreePanelCreate(), BorderLayout.WEST);
+        add(new TreePanelCreate(), BorderLayout.WEST);
        // add(new imcdownloader.Veiw.ViewPanelCreate());
         add(new LineStatusCreate(), BorderLayout.SOUTH);
         //add(new CreateSplitPane());
+
 
         setVisible(true);
     }

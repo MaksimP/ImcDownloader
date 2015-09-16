@@ -5,13 +5,13 @@ import imcdownloader.Model.ListFiles;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class ScrollTreePanelCreate extends JScrollPane {
+public class TreePanelCreate extends JScrollPane {
 
     JTree tree_files;
     JPopupMenu tree_popup_menu;
     JMenuItem menuItem_open;
 
-    public ScrollTreePanelCreate() {
+    public TreePanelCreate() {
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Список каталогов");
 
