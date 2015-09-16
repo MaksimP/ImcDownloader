@@ -30,6 +30,7 @@ public class TableModel extends AbstractTableModel {
         in = new FileInputStream(name_file);
         wr_book = new HSSFWorkbook(in);
         sheet = wr_book.getSheetAt(0);
+        //sheet.get
 
 
     }
@@ -48,7 +49,11 @@ public class TableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Iterator<Row> it_row = sheet.rowIterator();
+        int count_rows = sheet.getLastRowNum();
+        for (int i = 0; i < 10; i++) {
+            Row row = sheet.getRow(i);
+        }
+        /*Iterator<Row> it_row = sheet.rowIterator();
         while (it_row.hasNext()) {
             it_row.next();
             it_row.next();
@@ -59,7 +64,7 @@ public class TableModel extends AbstractTableModel {
                 Cell cell = it_cell.next();
                 column_count++;
             }
-        }
+        }*/
         return null;
     }
 }
