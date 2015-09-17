@@ -44,4 +44,24 @@ public class ToolBarCreate extends JToolBar{
 
         setFloatable(false);
     }
+
+    public JButton getButton_reload() {
+        return button_reload;
+    }
+
+    public JButton getButton_open() {
+        return button_open;
+    }
+
+    public JButton getButton_find() {
+        return button_find;
+    }
+
+    public JTextField getTextField_find() {
+        return textField_find;
+    }
+
+    public ControllerAction getControllerAction() {
+        return controllerAction;
+    }
 }

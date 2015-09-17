@@ -31,4 +31,16 @@ public class TreePanelCreate extends JScrollPane {
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setViewportView(tree_files);
     }
+
+    public JTree getTree_files() {
+        return tree_files;
+    }
+
+    public JPopupMenu getTree_popup_menu() {
+        return tree_popup_menu;
+    }
+
+    public JMenuItem getMenuItem_open() {
+        return menuItem_open;
+    }
 }

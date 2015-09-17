@@ -4,9 +4,13 @@ import javax.swing.*;
 
 public class LineStatusCreate extends JPanel {
 
-    JLabel stutus_line;
+    JLabel status_line;
 
     public LineStatusCreate() {
-        stutus_line = new JLabel();
+        status_line = new JLabel();
+    }
+
+    public JLabel getStatus_line() {
+        return status_line;
     }
 }

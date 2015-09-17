@@ -42,4 +42,32 @@ public class MenuBarCreate extends JMenuBar {
         add(menu_options);
         add(menu_help);
     }
+
+    public JMenu getMenu_file() {
+        return menu_file;
+    }
+
+    public JMenu getMenu_options() {
+        return menu_options;
+    }
+
+    public JMenu getMenu_help() {
+        return menu_help;
+    }
+
+    public JMenuItem getMenuItem_close() {
+        return menuItem_close;
+    }
+
+    public JMenuItem getMenuItem_reload() {
+        return menuItem_reload;
+    }
+
+    public JMenuItem getMenuItem_about() {
+        return menuItem_about;
+    }
+
+    public ControllerAction getControllerAction() {
+        return controllerAction;
+    }
 }
