@@ -5,66 +5,66 @@ import java.awt.event.ActionListener;
 
 public class MenuBarCreate extends JMenuBar {
 
-    JMenu menu_file;
-    JMenu menu_options;
-    JMenu menu_help;
+    JMenu menuFile;
+    JMenu menuOptions;
+    JMenu menuHelp;
 
-    JMenuItem menuItem_close;
-    JMenuItem menuItem_reload;
-    JMenuItem menuItem_about;
+    JMenuItem menuItemClose;
+    JMenuItem menuItemReload;
+    JMenuItem menuItemAbout;
 
     public MenuBarCreate() {
 
-        menu_file = new JMenu("Файл");
-        menu_options = new JMenu("Опции");
-        menu_help = new JMenu("Помощь");
+        menuFile = new JMenu("Файл");
+        menuOptions = new JMenu("Опции");
+        menuHelp = new JMenu("Помощь");
 
-        menuItem_close = new JMenuItem("Закрыть");
-        menuItem_close.setActionCommand("Close");
+        menuItemClose = new JMenuItem("Закрыть");
+        menuItemClose.setActionCommand("Close");
 
-        menuItem_reload = new JMenuItem("Обновить каталог");
-        menuItem_reload.setActionCommand("Reload");
+        menuItemReload = new JMenuItem("Обновить каталог");
+        menuItemReload.setActionCommand("Reload");
 
-        menuItem_about = new JMenuItem("О программе");
-        menuItem_about.setActionCommand("About");
+        menuItemAbout = new JMenuItem("О программе");
+        menuItemAbout.setActionCommand("About");
 
-        menu_file.add(menuItem_close);
-        menu_options.add(menuItem_reload);
-        menu_help.add(menuItem_about);
+        menuFile.add(menuItemClose);
+        menuOptions.add(menuItemReload);
+        menuHelp.add(menuItemAbout);
 
         //add menu to the menubar
-        add(menu_file);
-        add(menu_options);
-        add(menu_help);
+        add(menuFile);
+        add(menuOptions);
+        add(menuHelp);
     }
 
     public void addAction(ActionListener ae) {
-        menuItem_reload.addActionListener(ae);
-        menuItem_about.addActionListener(ae);
-        menuItem_close.addActionListener(ae);
+        menuItemReload.addActionListener(ae);
+        menuItemAbout.addActionListener(ae);
+        menuItemClose.addActionListener(ae);
     }
 
-    public JMenu getMenu_file() {
-        return menu_file;
+    public JMenu getMenuFile() {
+        return menuFile;
     }
 
-    public JMenu getMenu_options() {
-        return menu_options;
+    public JMenu getMenuOptions() {
+        return menuOptions;
     }
 
-    public JMenu getMenu_help() {
-        return menu_help;
+    public JMenu getMenuHelp() {
+        return menuHelp;
     }
 
-    public JMenuItem getMenuItem_close() {
-        return menuItem_close;
+    public JMenuItem getMenuItemClose() {
+        return menuItemClose;
     }
 
-    public JMenuItem getMenuItem_reload() {
-        return menuItem_reload;
+    public JMenuItem getMenuItemReload() {
+        return menuItemReload;
     }
 
-    public JMenuItem getMenuItem_about() {
-        return menuItem_about;
+    public JMenuItem getMenuItemAbout() {
+        return menuItemAbout;
     }
 }

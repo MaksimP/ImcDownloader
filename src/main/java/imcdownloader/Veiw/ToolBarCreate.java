@@ -6,58 +6,58 @@ import java.awt.event.ActionListener;
 
 public class ToolBarCreate extends JToolBar{
 
-    JButton button_reload;
-    JButton button_open;
-    JButton button_find;
-    JTextField textField_find;
+    JButton buttonReload;
+    JButton buttonOpen;
+    JButton buttonFind;
+    JTextField textFieldFind;
 
     public ToolBarCreate() {
-        ImageIcon image_reload = new ImageIcon("src/main/resources/arrow_refresh.png");
-        ImageIcon image_find = new ImageIcon("src/main/resources/find.png");
-        ImageIcon image_open = new ImageIcon("src/main/resources/folder_table.png");
+        ImageIcon imageReload = new ImageIcon("src/main/resources/arrow_refresh.png");
+        ImageIcon imageFind = new ImageIcon("src/main/resources/find.png");
+        ImageIcon imageOpen = new ImageIcon("src/main/resources/folder_table.png");
 
-        textField_find = new JTextField("Поиск", 10);
+        textFieldFind = new JTextField("Поиск", 10);
 
-        button_open = new JButton(image_open);
-        button_open.setActionCommand("Open");
-        button_open.setToolTipText("Открыть каталог");
+        buttonOpen = new JButton(imageOpen);
+        buttonOpen.setActionCommand("Open");
+        buttonOpen.setToolTipText("Открыть каталог");
 
-        button_reload = new JButton(image_reload);
-        button_reload.setActionCommand("Reload");
-        button_reload.setToolTipText("Обновить каталог");
+        buttonReload = new JButton(imageReload);
+        buttonReload.setActionCommand("Reload");
+        buttonReload.setToolTipText("Обновить каталог");
 
-        button_find = new JButton(image_find);
-        button_find.setActionCommand("Find");
-        button_find.setToolTipText("Найти");
+        buttonFind = new JButton(imageFind);
+        buttonFind.setActionCommand("Find");
+        buttonFind.setToolTipText("Найти");
 
-        add(button_open);
-        add(button_reload);
+        add(buttonOpen);
+        add(buttonReload);
         addSeparator(new Dimension(700, 20));
-        add(textField_find);
-        add(button_find);
+        add(textFieldFind);
+        add(buttonFind);
 
         setFloatable(false);
     }
 
     public void addAction(ActionListener ae) {
-        button_open.addActionListener(ae);
-        button_find.addActionListener(ae);
-        button_reload.addActionListener(ae);
+        buttonOpen.addActionListener(ae);
+        buttonFind.addActionListener(ae);
+        buttonReload.addActionListener(ae);
     }
 
-    public JButton getButton_reload() {
-        return button_reload;
+    public JButton getButtonReload() {
+        return buttonReload;
     }
 
-    public JButton getButton_open() {
-        return button_open;
+    public JButton getButtonOpen() {
+        return buttonOpen;
     }
 
-    public JButton getButton_find() {
-        return button_find;
+    public JButton getButtonFind() {
+        return buttonFind;
     }
 
-    public JTextField getTextField_find() {
-        return textField_find;
+    public JTextField getTextFieldFind() {
+        return textFieldFind;
     }
 }
