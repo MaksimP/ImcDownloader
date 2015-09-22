@@ -13,6 +13,11 @@ import java.net.URL;
 public class Download implements Runnable {
 
     private String url_connection = "http://ims-kharkov.narod.ru/xls";
+    private String nameFile;
+
+    public Download(String nameFile) {
+        this.nameFile = nameFile;
+    }
 
     @Override
     public void run() {
@@ -20,25 +25,22 @@ public class Download implements Runnable {
         FileOutputStream fileOutputStream;
         String url_file_download;
 
-        for (int i = 0; i < ListFiles.getList_file().length; i++) {
-            try {
-                int buffer;
-                url_file_download = url_connection + "/" + ListFiles.getNameFile(i);
-                URL url = new URL(url_file_download);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                inputStream = connection.getInputStream();
-                fileOutputStream = new FileOutputStream(ListFiles.getNameFile(i));
-
-                while ((buffer = inputStream.read()) != -1) {
-                    fileOutputStream.write(buffer);
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            int buffer;
+            url_file_download = url_connection + "/" + nameFile;
+            URL url = new URL(url_file_download);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            inputStream = connection.getInputStream();
+            fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFileForTree(nameFile));
+            while ((buffer = inputStream.read()) != -1) {
+                fileOutputStream.write(buffer);
             }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

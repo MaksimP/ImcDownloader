@@ -1,8 +1,6 @@
 package imcdownloader.Model;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class ListFiles {
@@ -43,92 +41,23 @@ public class ListFiles {
         list_files.put("material.xls", "материалы");
         list_files.put("instrument.xls", "инструменты");
         list_files.put("power.xls", "источники питания");
-
     }
 
-    static private String[] list_file = {
-            "ic_import.xls",
-            "ic_sovok.xls",
-            "vt_import.xls",
-            "vt_sovok.xls",
-            "vd_import.xls",
-            "vd_sovok.xls",
-            "cap_smd.xls",
-            "capacitor.xls",
-            "resistor.xls",
-            "res_smd.xls",
-            "res_prec.xls",
-            "res_power.xls",
-            "res_f.xls",
-            "res_pot.xls",
-            "relay.xls",
-            "qrystal.xls",
-            "inductor.xls",
-            "x_import.xls",
-            "x_sovok.xls",
-            "panelki.xls",
-            "s_import.xls",
-            "s_sovok.xls",
-            "other.xls",
-            "pribor.xls",
-            "multimetr.xls",
-            "hl.xls",
-            "opto.xls",
-            "korpus.xls",
-            "krepezh.xls",
-            "material.xls",
-            "instrument.xls",
-            "power.xls"
-    };
-
-    static private String[] list_file_names = {
-            "микросхемы(имп)",
-            "микросхемы(сов)",
-            "транзисторы(имп)",
-            "транзисторы(сов)",
-            "диоды(имп)",
-            "диоды(сов)",
-            "конденсаторы smd",
-            "конденсаторы",
-            "резисторы",
-            "резисторы smd",
-            "резисторы прецизионные",
-            "резисторы мощные",
-            "резисторы нелинейные",
-            "резисторы переменные",
-            "реле",
-            "резонаторы",
-            "индуктивности",
-            "разьемы имп",
-            "разьемы сов",
-            "панельки",
-            "кнопки имп",
-            "кнопки сов",
-            "кнопки сов",
-            "предохранители",
-            "приборы(сов)",
-            "измерительная техника",
-            "индикаторы",
-            "оптроны",
-            "корпуса",
-            "крепеж",
-            "материалы",
-            "инструменты",
-            "источники питания",
-    };
-
-    static void ttt() {
-        Set<Map.Entry<String, String>> set_list = list_files.entrySet();
-
+    static public String getNameFile(int index) {
+        Set<String> entrySet = list_files.keySet();
+        return (String) entrySet.toArray()[index];
     }
 
-    static public String[] getList_file() {
-        return list_file;
+    static public String getNameFileForTree(int index) {
+        return list_files.get(getNameFile(index));
     }
 
-    static public String getNameFile(int index_array) {
-        return list_file[index_array];
+    static public String getNameFileForTree(String key) {
+        return list_files.get(key);
+    }
+
+    static public int getLength() {
+        return list_files.size();
     }
 }
-
 

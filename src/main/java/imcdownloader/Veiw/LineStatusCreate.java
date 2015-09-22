@@ -1,16 +1,22 @@
 package imcdownloader.Veiw;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class LineStatusCreate extends JPanel {
 
-    JLabel status_line;
+    JLabel stutusLine;
 
     public LineStatusCreate() {
-        status_line = new JLabel();
+
+        setPreferredSize(new Dimension(1080, 23));
+        setLayout(new BorderLayout());
+        stutusLine = new JLabel();
+        stutusLine.setPreferredSize(new Dimension(500, 23));
+        add(stutusLine, BorderLayout.WEST);
     }
 
-    public JLabel getStatus_line() {
-        return status_line;
+    public JLabel getStutusLine() {
+        return stutusLine;
     }
 }

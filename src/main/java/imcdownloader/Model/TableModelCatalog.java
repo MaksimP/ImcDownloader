@@ -1,5 +1,6 @@
 package imcdownloader.Model;
 
+import imcdownloader.Const;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -10,21 +11,21 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class TableModel extends AbstractTableModel {
+public class TableModelCatalog extends AbstractTableModel {
 
     private InputStream in;
-    private Workbook wr_book;
+    private Workbook wrBook;
     private Sheet sheet;
 
-    public TableModel(String name_file) throws IOException {
-        in = new FileInputStream(name_file);
-        wr_book = new HSSFWorkbook(in);
-        sheet = wr_book.getSheetAt(0);
+    public TableModelCatalog(String nameFile) throws IOException {
+        in = new FileInputStream(Const.getPathToCatalog() + nameFile);
+        wrBook = new HSSFWorkbook(in);
+        sheet = wrBook.getSheetAt(0);
     }
 
     @Override
     public String getColumnName(int column) {
-        return sheet.getRow(3).getCell(column).toString();
+        return sheet.getRow(2).getCell(column).toString();
     }
 
     @Override
@@ -34,11 +35,11 @@ public class TableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return sheet.getRow(3).getLastCellNum();
+        return sheet.getRow(2).getLastCellNum();
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return sheet.getRow(rowIndex).getCell(columnIndex);
+        return sheet.getRow(rowIndex + 3).getCell(columnIndex);
     }
 }

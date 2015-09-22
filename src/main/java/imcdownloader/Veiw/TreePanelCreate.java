@@ -1,46 +1,46 @@
 package imcdownloader.Veiw;
 
+import imcdownloader.Const;
 import imcdownloader.Model.ListFiles;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeSelectionModel;
+import java.awt.event.MouseListener;
+import java.io.File;
 
 public class TreePanelCreate extends JScrollPane {
 
-    JTree tree_files;
-    JPopupMenu tree_popup_menu;
-    JMenuItem menuItem_open;
+    JTree treeFiles;
+    DefaultMutableTreeNode root;
+    DefaultTreeModel treeModel;
 
     public TreePanelCreate() {
 
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Список каталогов");
+        root = new DefaultMutableTreeNode(Const.getPathToCatalog());
+        treeModel = new DefaultTreeModel(root);
 
-
-        for (int i = 0; i < ListFiles.getList_file().length - 1; i++) {
-            root.add(new DefaultMutableTreeNode(ListFiles.getNameFile(i)));
-
+        for (int i = 0; i < ListFiles.getLength() - 1; i++) {
+            root.add(new DefaultMutableTreeNode(new File(ListFiles.getNameFileForTree(i))));
         }
 
-        tree_files = new JTree(root);
-        tree_popup_menu = new JPopupMenu();
-        menuItem_open = new JMenuItem("Открыть");
-
-        tree_popup_menu.add(menuItem_open);
-        setComponentPopupMenu(tree_popup_menu);
+        treeFiles = new JTree(treeModel);
+        treeFiles.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        setViewportView(tree_files);
+        setViewportView(treeFiles);
     }
 
-    public JTree getTree_files() {
-        return tree_files;
+    public void addActionMouse(MouseListener ae) {
+        treeFiles.addMouseListener(ae);
     }
 
-    public JPopupMenu getTree_popup_menu() {
-        return tree_popup_menu;
+    public JTree getTreeFiles() {
+        return treeFiles;
     }
 
-    public JMenuItem getMenuItem_open() {
-        return menuItem_open;
+    public DefaultMutableTreeNode getRoot() {
+        return root;
     }
 }
