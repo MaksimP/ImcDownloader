@@ -49,6 +49,7 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                 createGUI.getLineStatusCreate().getStutusLine().setText(" Каталоги обновлены");
                 break;
             case "Find" :
+                boolean flag = false;
                 String stringFind = createGUI.getToolBar().getTextFieldFind().getText();
                 JScrollPane scrollBuffer = (JScrollPane)createGUI.getTabbedPanelCreate().getSelectedComponent();
                 JTable tableTab = (JTable)scrollBuffer.getViewport().getView();
@@ -62,10 +63,12 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                     if (stringFind.equalsIgnoreCase(tableTab.getValueAt(i, 0).toString().trim())) {
                         tableTab.scrollRectToVisible(tableTab.getCellRect(1, 1, true));
                         tableTab.setRowSelectionInterval(i, i);
-                        tableTab.requestFocus();
-                        //tableTab.changeSelection(i, 0, false, false);
-                    } else {
-                       // createGUI.getLineStatusCreate().getStutusLine().setText(" В данном каталоге не найдено. Переключите вкладку на нужный каталог.");
+                        //tableTab.requestFocus();
+                        flag = true;
+                        break;
+                    }
+                    if (!flag) {
+                        createGUI.getLineStatusCreate().getStutusLine().setText(" В данном каталоге не найдено. Переключите вкладку на нужный каталог.");
                     }
                 }
 
