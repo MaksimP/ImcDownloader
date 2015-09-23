@@ -17,6 +17,7 @@ public class CreateGUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
+        setLocationRelativeTo(null);
 
         menuBarCreate = new MenuBarCreate();
         setJMenuBar(menuBarCreate);
@@ -39,7 +40,7 @@ public class CreateGUI extends JFrame{
         add(lineStatusCreate, BorderLayout.SOUTH);
         //add(new CreateSplitPane());
 
-        pack();
+        //pack();
         //setVisible(true);
     }
 

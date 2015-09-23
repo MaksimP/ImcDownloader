@@ -16,7 +16,7 @@ public class ToolBarCreate extends JToolBar{
         ImageIcon imageFind = new ImageIcon("src/main/resources/find.png");
         ImageIcon imageOpen = new ImageIcon("src/main/resources/folder_table.png");
 
-        textFieldFind = new JTextField("Поиск", 10);
+        textFieldFind = new JTextField(10);
 
         buttonOpen = new JButton(imageOpen);
         buttonOpen.setActionCommand("Open");

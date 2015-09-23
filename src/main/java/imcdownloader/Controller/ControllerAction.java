@@ -6,13 +6,18 @@ import imcdownloader.Model.TableModelCatalog;
 import imcdownloader.Veiw.CreateGUI;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.tree.TreePath;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
-public class ControllerAction extends AbstractAction implements MouseListener {
+public class ControllerAction extends AbstractAction implements MouseListener, PopupMenuListener {
 
     CreateGUI createGUI;
 
@@ -25,6 +30,7 @@ public class ControllerAction extends AbstractAction implements MouseListener {
         createGUI.getMenuBarCreate().addAction(this);
         createGUI.getToolBar().addAction(this);
         createGUI.getTreePanelCreate().addActionMouse(this);
+        createGUI.getTabbedPanelCreate().addPopupListner(this);
     }
 
     @Override
@@ -46,6 +52,25 @@ public class ControllerAction extends AbstractAction implements MouseListener {
                     }
                     //createGUI.getLineStatusCreate().getStutusLine().setText("Загружается " + ListFiles.getNameFileForTree(i));
                 }
+                break;
+            case "Find" :
+                String stringFind = createGUI.getToolBar().getTextFieldFind().getText();
+                JScrollPane scrollBuffer = (JScrollPane)createGUI.getTabbedPanelCreate().getSelectedComponent();
+                JTable tableTab = (JTable)scrollBuffer.getViewport().getView();
+                /*TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableTab.getModel());
+                tableTab.setRowSorter(rowSorter);
+                if (stringFind.length() != 0) {
+                    rowSorter.setRowFilter(RowFilter.regexFilter(stringFind));
+                }*/
+
+                for (int i = 0; i < tableTab.getRowCount(); i++) {
+                    if (stringFind.equalsIgnoreCase(tableTab.getValueAt(i, 0).toString())) {
+                        System.out.println("__" + stringFind + tableTab.getValueAt(i, 0));
+                        tableTab.scrollRectToVisible(tableTab.getCellRect(1, 1, true));
+                        tableTab.setRowSelectionInterval(i, i);
+                    }
+                }
+
                 break;
             case "About" :
                 JOptionPane.showMessageDialog(null, "<html>О программе<br>" +
@@ -93,6 +118,22 @@ public class ControllerAction extends AbstractAction implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+
+    }
+
+    @Override
+    public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+        int index = createGUI.getTabbedPanelCreate().getSelectedIndex();
+        createGUI.getTabbedPanelCreate().remove(index);
+    }
+
+    @Override
+    public void popupMenuCanceled(PopupMenuEvent e) {
 
     }
 }
