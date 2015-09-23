@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ControllerAction extends AbstractAction implements MouseListener, PopupMenuListener {
@@ -40,18 +41,12 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
         switch (command) {
             case "Reload" :
                 Thread thread_download;
-                //createGUI.getScrollTreeCreate().removeChild();
-                for (int i = 0; i < ListFiles.getLength() - 9; i++) {
-                    //createGUI.getLineStatusCreate().getStutusLine().setText("");
+                createGUI.getLineStatusCreate().getStutusLine().setText(" Идет обновление каталогов");
+                for (int i = 0; i < ListFiles.getLength() - 1; i++) {
                     thread_download = new Thread(new Download(ListFiles.getNameFile(i)));
                     thread_download.start();
-                    try {
-                        thread_download.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //createGUI.getLineStatusCreate().getStutusLine().setText("Загружается " + ListFiles.getNameFileForTree(i));
                 }
+                createGUI.getLineStatusCreate().getStutusLine().setText(" Каталоги обновлены");
                 break;
             case "Find" :
                 String stringFind = createGUI.getToolBar().getTextFieldFind().getText();
@@ -64,10 +59,13 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                 }*/
 
                 for (int i = 0; i < tableTab.getRowCount(); i++) {
-                    if (stringFind.equalsIgnoreCase(tableTab.getValueAt(i, 0).toString())) {
-                        System.out.println("__" + stringFind + tableTab.getValueAt(i, 0));
+                    if (stringFind.equalsIgnoreCase(tableTab.getValueAt(i, 0).toString().trim())) {
                         tableTab.scrollRectToVisible(tableTab.getCellRect(1, 1, true));
                         tableTab.setRowSelectionInterval(i, i);
+                        tableTab.requestFocus();
+                        //tableTab.changeSelection(i, 0, false, false);
+                    } else {
+                       // createGUI.getLineStatusCreate().getStutusLine().setText(" В данном каталоге не найдено. Переключите вкладку на нужный каталог.");
                     }
                 }
 
@@ -87,19 +85,18 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
     public void mousePressed(MouseEvent e) {
-        //int selRow = createGUI.getTreePanelCreate().getTreeFiles().getRowForLocation(e.getX(), e.getY());
         TreePath sellPath = createGUI.getTreePanelCreate().getTreeFiles().getPathForLocation(e.getX(), e.getY());
         if (e.getClickCount() == 2) {
             String nameNode = sellPath.toString();
             String nameFile = nameNode.substring(nameNode.indexOf(' ') + 1, nameNode.length() - 1);
             try {
-                createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(new JTable(new TableModelCatalog(nameFile))));
+                JTable tableCatalog = new JTable(new TableModelCatalog(nameFile));
+                tableCatalog.setColumnSelectionAllowed(false);
+                createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(tableCatalog));
+                //createGUI.getTabbedPanelCreate().
+            } catch (FileNotFoundException ee) {
+                createGUI.getLineStatusCreate().getStutusLine().setText(" Не удается найти каталог. Обновите данные");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -107,7 +104,18 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
     }
 
     @Override
+    public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+        int index = createGUI.getTabbedPanelCreate().getSelectedIndex();
+        createGUI.getTabbedPanelCreate().remove(index);
+    }
+
+    @Override
     public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
     }
 
@@ -126,11 +134,6 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
 
     }
 
-    @Override
-    public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-        int index = createGUI.getTabbedPanelCreate().getSelectedIndex();
-        createGUI.getTabbedPanelCreate().remove(index);
-    }
 
     @Override
     public void popupMenuCanceled(PopupMenuEvent e) {
