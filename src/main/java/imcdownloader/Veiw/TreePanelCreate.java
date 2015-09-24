@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.io.File;
 
@@ -27,6 +28,7 @@ public class TreePanelCreate extends JScrollPane {
 
         treeFiles = new JTree(treeModel);
         treeFiles.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        treeFiles.setMaximumSize(new Dimension(50, 500));
 
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setViewportView(treeFiles);

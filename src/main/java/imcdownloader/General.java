@@ -4,9 +4,15 @@ import imcdownloader.Controller.ControllerAction;
 import imcdownloader.Veiw.CreateGUI;
 
 import javax.swing.*;
+import java.io.File;
 
 public class General {
     public static void main(String[] args) {
+
+        File dirCatalog = new File(Const.getPathToCatalog());
+        if (!(dirCatalog.exists())) {
+            dirCatalog.mkdir();
+        }
 
         SwingUtilities.invokeLater(() -> {
             CreateGUI createGUI = new CreateGUI();

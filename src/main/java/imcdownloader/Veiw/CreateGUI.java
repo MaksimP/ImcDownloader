@@ -10,6 +10,7 @@ public class CreateGUI extends JFrame{
     MenuBarCreate menuBarCreate;
     TabbedPanelCreate tabbedPanelCreate;
     LineStatusCreate lineStatusCreate;
+    JSplitPane splitPane;
 
     public CreateGUI() {
 
@@ -26,10 +27,16 @@ public class CreateGUI extends JFrame{
         add(toolBar, BorderLayout.NORTH);
 
         treePanelCreate = new TreePanelCreate();
-        add(treePanelCreate, BorderLayout.WEST);
+        //add(treePanelCreate, BorderLayout.WEST);
 
         tabbedPanelCreate = new TabbedPanelCreate();
-        add(tabbedPanelCreate, BorderLayout.CENTER);
+        //add(tabbedPanelCreate, BorderLayout.CENTER);
+
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, treePanelCreate, tabbedPanelCreate);
+        //splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(230);
+        splitPane.setDividerSize(2);
+        add(splitPane);
 
         lineStatusCreate = new LineStatusCreate();
         add(lineStatusCreate, BorderLayout.SOUTH);
