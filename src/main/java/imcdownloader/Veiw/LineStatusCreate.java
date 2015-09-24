@@ -5,18 +5,18 @@ import java.awt.*;
 
 public class LineStatusCreate extends JPanel {
 
-    JLabel stutusLine;
+    JLabel statusLine;
 
     public LineStatusCreate() {
 
         setPreferredSize(new Dimension(1080, 23));
         setLayout(new BorderLayout());
-        stutusLine = new JLabel();
-        stutusLine.setPreferredSize(new Dimension(500, 23));
-        add(stutusLine, BorderLayout.WEST);
+        statusLine = new JLabel();
+        statusLine.setPreferredSize(new Dimension(500, 23));
+        add(statusLine, BorderLayout.WEST);
     }
 
-    public JLabel getStutusLine() {
-        return stutusLine;
+    public JLabel getStatusLine() {
+        return statusLine;
     }
 }

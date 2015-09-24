@@ -7,8 +7,6 @@ public class TabbedPanelCreate extends JTabbedPane{
 
     JPopupMenu popupMenu;
     JMenuItem menuItem;
-    JScrollPane scrollPane;
-    JTable tableCatalog;
 
     public TabbedPanelCreate() {
 
@@ -22,7 +20,7 @@ public class TabbedPanelCreate extends JTabbedPane{
         this.setComponentPopupMenu(popupMenu);
     }
 
-    public void addPopupListner(PopupMenuListener ae) {
+    public void addPopupListener(PopupMenuListener ae) {
         popupMenu.addPopupMenuListener(ae);
     }
 

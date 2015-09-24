@@ -30,7 +30,7 @@ public class ToolBarCreate extends JToolBar{
         buttonFind.setActionCommand("Find");
         buttonFind.setToolTipText("Найти");
 
-        add(buttonOpen);
+       // add(buttonOpen);
         add(buttonReload);
         addSeparator(new Dimension(700, 20));
         add(textFieldFind);

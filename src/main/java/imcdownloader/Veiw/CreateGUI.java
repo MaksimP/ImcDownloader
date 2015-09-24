@@ -28,17 +28,11 @@ public class CreateGUI extends JFrame{
         treePanelCreate = new TreePanelCreate();
         add(treePanelCreate, BorderLayout.WEST);
 
-        /*listPanelCreate = new ListPanelCreate();
-        add(listPanelCreate, BorderLayout.WEST);*/
-
         tabbedPanelCreate = new TabbedPanelCreate();
         add(tabbedPanelCreate, BorderLayout.CENTER);
 
-        // add(new TreePanelCreate(), BorderLayout.WEST);
-        // add(new imcdownloader.Veiw.ViewPanelCreate());
         lineStatusCreate = new LineStatusCreate();
         add(lineStatusCreate, BorderLayout.SOUTH);
-        //add(new CreateSplitPane());
 
         //pack();
         //setVisible(true);

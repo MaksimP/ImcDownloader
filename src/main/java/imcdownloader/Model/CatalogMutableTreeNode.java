@@ -11,10 +11,6 @@ public class CatalogMutableTreeNode extends DefaultMutableTreeNode {
     private String nameFile;
     private String corePath = Const.getPathToCatalog();
 
-    public CatalogMutableTreeNode() {
-
-    }
-
     public CatalogMutableTreeNode(String nameFile) {
         this.nameFile = nameFile;
         pathFile =  corePath + nameFile;
