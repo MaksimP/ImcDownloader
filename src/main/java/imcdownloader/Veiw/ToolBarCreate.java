@@ -12,9 +12,9 @@ public class ToolBarCreate extends JToolBar{
     JTextField textFieldFind;
 
     public ToolBarCreate() {
-        ImageIcon imageReload = new ImageIcon("src/main/resources/arrow_refresh.png");
-        ImageIcon imageFind = new ImageIcon("src/main/resources/find.png");
-        ImageIcon imageOpen = new ImageIcon("src/main/resources/folder_table.png");
+        ImageIcon imageReload = new ImageIcon(ToolBarCreate.class.getResource("/arrow_refresh.png"));
+        ImageIcon imageFind = new ImageIcon(ToolBarCreate.class.getResource("/find.png"));
+        ImageIcon imageOpen = new ImageIcon(ToolBarCreate.class.getResource("/folder_table.png"));
 
         textFieldFind = new JTextField(10);
 

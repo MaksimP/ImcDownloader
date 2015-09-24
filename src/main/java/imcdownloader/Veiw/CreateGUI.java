@@ -34,7 +34,7 @@ public class CreateGUI extends JFrame{
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, treePanelCreate, tabbedPanelCreate);
         //splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(230);
+        splitPane.setDividerLocation(220);
         splitPane.setDividerSize(2);
         add(splitPane);
 

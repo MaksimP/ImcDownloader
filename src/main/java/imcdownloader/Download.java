@@ -15,9 +15,9 @@ public class Download implements Runnable {
     private String url_connection = "http://ims-kharkov.narod.ru/xls";
     private String nameFile;
 
-    public Download(String nameFile) {
+   /* public Download(String nameFile) {
         this.nameFile = nameFile;
-    }
+    }*/
 
     @Override
     public void run() {
@@ -26,14 +26,16 @@ public class Download implements Runnable {
         String url_file_download;
 
         try {
-            int buffer;
-            url_file_download = url_connection + "/" + nameFile;
-            URL url = new URL(url_file_download);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            inputStream = connection.getInputStream();
-            fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFileForTree(nameFile));
-            while ((buffer = inputStream.read()) != -1) {
-                fileOutputStream.write(buffer);
+            for (int i = 0; i < ListFiles.getLength() - 1; i++) {
+                int buffer;
+                url_file_download = url_connection + "/" + nameFile;
+                URL url = new URL(url_file_download);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                inputStream = connection.getInputStream();
+                fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFile(i));
+                while ((buffer = inputStream.read()) != -1) {
+                    fileOutputStream.write(buffer);
+                }
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();

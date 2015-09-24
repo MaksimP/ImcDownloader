@@ -1,5 +1,6 @@
 package imcdownloader.Controller;
 
+import imcdownloader.Const;
 import imcdownloader.Download;
 import imcdownloader.Model.ListFiles;
 import imcdownloader.Model.TableModelCatalog;
@@ -35,11 +36,9 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
             case "Reload" :
                 Thread thread_download;
                 createGUI.getLineStatusCreate().getStatusLine().setText(" Идет обновление каталогов");
-                for (int i = 0; i < ListFiles.getLength() - 1; i++) {
-                    thread_download = new Thread(new Download(ListFiles.getNameFile(i)));
-                    thread_download.start();
-                }
-                createGUI.getLineStatusCreate().getStatusLine().setText(" Каталоги обновлены");
+                thread_download = new Thread(new Download());
+                thread_download.start();
+                //createGUI.getLineStatusCreate().getStatusLine().setText(" Каталоги обновлены");
                 break;
             case "Find" :
                 String stringFind = createGUI.getToolBar().getTextFieldFind().getText();
