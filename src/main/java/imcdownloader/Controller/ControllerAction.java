@@ -51,6 +51,7 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                                 tableTab.getValueAt(i, 0).toString().startsWith(stringFind.toUpperCase())) {
                             tableTab.setRowSelectionInterval(i, i);
                             scrollBuffer.getVerticalScrollBar().setValue(tableTab.getCellRect(i, 1, true).y);
+                            createGUI.getLineStatusCreate().getStatusLine().setText(" Строка " + i);
                             break;
                         }
                     } catch (NullPointerException e) {
@@ -80,7 +81,8 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
             String nameFile = nameNode.substring(nameNode.indexOf(' ') + 1, nameNode.length() - 1);
             try {
                 JTable tableCatalog = new JTable(new TableModelCatalog(nameFile));
-                tableCatalog.setColumnSelectionAllowed(false);
+                //tableCatalog.setColumnSelectionAllowed(false);
+                tableCatalog.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(tableCatalog));
                 createGUI.getTabbedPanelCreate().setSelectedIndex(createGUI.getTabbedPanelCreate().indexOfTab(nameFile));
                 createGUI.getLineStatusCreate().getStatusLine().setText("");
