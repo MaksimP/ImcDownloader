@@ -1,11 +1,9 @@
 package imcdownloader;
 
+import imcdownloader.Controller.UpdateFiles;
 import imcdownloader.Model.ListFiles;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,9 +31,15 @@ public class Download implements Runnable {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 inputStream = connection.getInputStream();
                 fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFileForTree(i));
+                /*File temp = new File(Const.getPathToCatalog() + "temp.xls");
+                fileOutputStream = new FileOutputStream(temp);*/
+
                 while ((buffer = inputStream.read()) != -1) {
                     fileOutputStream.write(buffer);
                 }
+                /*UpdateFiles updateFiles = new UpdateFiles(temp);
+                updateFiles.reWriteFile(i);
+                temp = null;*/
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
