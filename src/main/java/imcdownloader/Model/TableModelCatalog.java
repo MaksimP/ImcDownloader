@@ -39,6 +39,6 @@ public class TableModelCatalog extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return sheet.getRow(rowIndex + 3).getCell(columnIndex);
+        return sheet.getRow(rowIndex).getCell(columnIndex);
     }
 }

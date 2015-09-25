@@ -28,11 +28,11 @@ public class Download implements Runnable {
         try {
             for (int i = 0; i < ListFiles.getLength() - 1; i++) {
                 int buffer;
-                url_file_download = url_connection + "/" + nameFile;
+                url_file_download = url_connection + "/" + ListFiles.getNameFile(i);
                 URL url = new URL(url_file_download);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 inputStream = connection.getInputStream();
-                fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFile(i));
+                fileOutputStream = new FileOutputStream(Const.getPathToCatalog() + ListFiles.getNameFileForTree(i));
                 while ((buffer = inputStream.read()) != -1) {
                     fileOutputStream.write(buffer);
                 }
