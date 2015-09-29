@@ -24,7 +24,7 @@ public class TableModelCatalog extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return sheet.getRow(3).getCell(column).toString();
+        return sheet.getRow(2).getCell(column).toString();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class TableModelCatalog extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return sheet.getRow(3).getLastCellNum();
+        return sheet.getRow(2).getLastCellNum();
     }
 
     @Override
