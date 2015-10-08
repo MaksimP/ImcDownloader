@@ -19,6 +19,7 @@ import java.io.IOException;
 public class ControllerAction extends AbstractAction implements MouseListener, PopupMenuListener {
 
     CreateGUI createGUI;
+    int label;
 
     public ControllerAction(CreateGUI createGUI) {
         this.createGUI = createGUI;
@@ -45,17 +46,24 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                 JScrollPane scrollBuffer = (JScrollPane)createGUI.getTabbedPanelCreate().getSelectedComponent();
                 JTable tableTab = (JTable)scrollBuffer.getViewport().getView();
 
-                for (int i = 0; i < tableTab.getRowCount(); i++) {
-                    try {
-                        if (tableTab.getValueAt(i, 0).toString().startsWith(stringFind) ||
-                                tableTab.getValueAt(i, 0).toString().startsWith(stringFind.toUpperCase())) {
-                            tableTab.setRowSelectionInterval(i, i);
-                            scrollBuffer.getVerticalScrollBar().setValue(tableTab.getCellRect(i, 1, true).y);
-                            createGUI.getLineStatusCreate().getStatusLine().setText(" Строка " + i);
-                            break;
+                int i;
+                start:
+                for (i = label; i < tableTab.getRowCount(); i++) {
+                    for (int j = 0; j < tableTab.getColumnCount(); j++) {
+                        try {
+                            if (tableTab.getValueAt(i, j).toString().indexOf(stringFind) != -1 ||
+                                    tableTab.getValueAt(i, j).toString().indexOf(stringFind.toUpperCase()) != -1) {
+                                tableTab.setRowSelectionInterval(i, i);
+                                scrollBuffer.getVerticalScrollBar().setValue(tableTab.getCellRect(i, 1, true).y);
+                                createGUI.getLineStatusCreate().getStatusLine().setText(" Строка " + i);
+                                label = ++i;
+                                break start;
+                            } else {
+                                label = 0;
+                            }
+                        } catch (NullPointerException e) {
+                            createGUI.getLineStatusCreate().getStatusLine().setText(" В данном каталоге не найдено. Переключите вкладку на нужный каталог.");
                         }
-                    } catch (NullPointerException e) {
-                        createGUI.getLineStatusCreate().getStatusLine().setText(" В данном каталоге не найдено. Переключите вкладку на нужный каталог.");
                     }
                 }
                 break;
@@ -78,10 +86,9 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
         TreePath sellPath = createGUI.getTreePanelCreate().getTreeFiles().getPathForLocation(e.getX(), e.getY());
         if (e.getClickCount() == 2) {
             String nameNode = sellPath.toString();
-            String nameFile = nameNode.substring(nameNode.indexOf(' ') + 1, nameNode.length() - 1);
+            String nameFile = nameNode.substring(nameNode.lastIndexOf(',') + 2, nameNode.length() - 1);
             try {
                 JTable tableCatalog = new JTable(new TableModelCatalog(nameFile));
-                //tableCatalog.setColumnSelectionAllowed(false);
                 tableCatalog.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(tableCatalog));
                 createGUI.getTabbedPanelCreate().setSelectedIndex(createGUI.getTabbedPanelCreate().indexOfTab(nameFile));
