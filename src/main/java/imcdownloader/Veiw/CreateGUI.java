@@ -17,7 +17,7 @@ public class CreateGUI extends JFrame{
         setSize(1100, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setResizable(false);
+        //setResizable(false);
         setLocationRelativeTo(null);
 
         menuBarCreate = new MenuBarCreate();
