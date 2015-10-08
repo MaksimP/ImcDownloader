@@ -10,8 +10,8 @@ public class General {
     public static void main(String[] args) {
 
         File dirCatalog = new File(Const.getPathToCatalog());
-        if (!(dirCatalog.exists())) {
-            dirCatalog.mkdir();
+        if (!dirCatalog.exists()) {
+            dirCatalog.mkdirs();
         }
 
         SwingUtilities.invokeLater(() -> {
