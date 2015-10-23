@@ -7,9 +7,11 @@ import imcdownloader.Model.TableModelCatalog;
 import imcdownloader.Veiw.CreateGUI;
 
 import javax.swing.*;
+import javax.swing.event.MenuDragMouseEvent;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.tree.TreePath;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,8 +20,8 @@ import java.io.IOException;
 
 public class ControllerAction extends AbstractAction implements MouseListener, PopupMenuListener {
 
-    CreateGUI createGUI;
-    int label;
+    private CreateGUI createGUI;
+    private int label;
 
     public ControllerAction(CreateGUI createGUI) {
         this.createGUI = createGUI;
@@ -27,6 +29,7 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
         createGUI.getToolBar().addAction(this);
         createGUI.getTreePanelCreate().addActionMouse(this);
         createGUI.getTabbedPanelCreate().addPopupListener(this);
+
     }
 
     @Override
@@ -83,26 +86,28 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
 
     @Override
     public void mousePressed(MouseEvent e) {
-        TreePath sellPath = createGUI.getTreePanelCreate().getTreeFiles().getPathForLocation(e.getX(), e.getY());
-        if (e.getClickCount() == 2) {
-            String nameNode = sellPath.toString();
-            String nameFile = nameNode.substring(nameNode.lastIndexOf(',') + 2, nameNode.length() - 1);
-            try {
-                JTable tableCatalog = new JTable(new TableModelCatalog(nameFile));
-                tableCatalog.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(tableCatalog));
-                createGUI.getTabbedPanelCreate().setSelectedIndex(createGUI.getTabbedPanelCreate().indexOfTab(nameFile));
-                createGUI.getLineStatusCreate().getStatusLine().setText("");
-            } catch (FileNotFoundException ee) {
-                createGUI.getLineStatusCreate().getStatusLine().setText(" Не удается найти каталог. Обновите данные");
-            } catch (IOException e1) {
-                e1.printStackTrace();
+
+        int column = 0;
+        if (SwingUtilities.isRightMouseButton(e)) {
+            if (e.getSource() instanceof JTable) {
+                JTable table = (JTable) e.getSource();
+                if (column == table.columnAtPoint(e.getPoint())) {
+                    table.setRowSelectionInterval(table.rowAtPoint(e.getPoint()), table.rowAtPoint(e.getPoint()));
+                    JPopupMenu popupMenu = new JPopupMenu();
+                    JMenuItem item = new JMenuItem("Find datasheet");
+                    popupMenu.add(item);
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+
+
+                    System.out.println(((JTable) e.getSource()).getValueAt(((JTable) e.getSource()).getSelectedRow(), 0));
+                }
             }
         }
     }
 
     @Override
     public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+        System.out.println(e.toString());
         int index = createGUI.getTabbedPanelCreate().getSelectedIndex();
         createGUI.getTabbedPanelCreate().remove(index);
     }
@@ -114,7 +119,25 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        TreePath sellPath = createGUI.getTreePanelCreate().getTreeFiles().getPathForLocation(e.getX(), e.getY());
+        if (e.getClickCount() == 2) {
+            String nameNode = sellPath.toString();
+            String nameFile = nameNode.substring(nameNode.lastIndexOf(',') + 2, nameNode.length() - 1);
+            try {
+                JTable tableCatalog = new JTable(new TableModelCatalog(nameFile));
+                tableCatalog.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                tableCatalog.addMouseListener(this);
 
+                createGUI.getTabbedPanelCreate().addTab(nameFile, new JScrollPane(tableCatalog));
+                createGUI.getTabbedPanelCreate().setSelectedIndex(createGUI.getTabbedPanelCreate().indexOfTab(nameFile));
+                //System.out.println(createGUI.getTabbedPanelCreate().getComponentAt(createGUI.getTabbedPanelCreate().indexOfTab(nameFile)).get);
+                createGUI.getLineStatusCreate().getStatusLine().setText("");
+            } catch (FileNotFoundException ee) {
+                createGUI.getLineStatusCreate().getStatusLine().setText(" Не удается найти каталог. Обновите данные");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     @Override
