@@ -13,10 +13,14 @@ import javax.swing.event.PopupMenuListener;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class ControllerAction extends AbstractAction implements MouseListener, PopupMenuListener {
 
@@ -97,9 +101,18 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
                     JMenuItem item = new JMenuItem("Find datasheet");
                     popupMenu.add(item);
                     popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                    item.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                            try {
+                                Runtime.getRuntime().exec("C:/Program Files/Google/Chrome/Application/chrome.exe google.ru#newwindow=1&q=" +
+                                        table.getValueAt(table.rowAtPoint(e.getPoint()), 0));
 
-
-                    System.out.println(((JTable) e.getSource()).getValueAt(((JTable) e.getSource()).getSelectedRow(), 0));
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -107,7 +120,6 @@ public class ControllerAction extends AbstractAction implements MouseListener, P
 
     @Override
     public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-        System.out.println(e.toString());
         int index = createGUI.getTabbedPanelCreate().getSelectedIndex();
         createGUI.getTabbedPanelCreate().remove(index);
     }
