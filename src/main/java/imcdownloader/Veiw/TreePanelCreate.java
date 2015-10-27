@@ -13,16 +13,18 @@ import java.io.File;
 
 public class TreePanelCreate extends JScrollPane {
 
-    JTree treeFiles;
-    DefaultMutableTreeNode root;
-    DefaultTreeModel treeModel;
+    private JTree treeFiles;
+    private DefaultMutableTreeNode root;
+    private DefaultTreeModel treeModel;
 
     public TreePanelCreate() {
 
         root = new DefaultMutableTreeNode(Const.getPathToCatalog());
         treeModel = new DefaultTreeModel(root);
 
-        for (int i = 0; i < ListFiles.getLength() - 1; i++) {
+
+
+        for (int i = 0; i < ListFiles.getLength(); i++) {
             root.add(new DefaultMutableTreeNode(new File(ListFiles.getNameFileForTree(i))));
         }
 
@@ -30,7 +32,7 @@ public class TreePanelCreate extends JScrollPane {
         treeFiles.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         treeFiles.setMaximumSize(new Dimension(50, 500));
 
-        setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         setViewportView(treeFiles);
     }
 

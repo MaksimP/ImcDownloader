@@ -5,8 +5,8 @@ import javax.swing.event.PopupMenuListener;
 
 public class TabbedPanelCreate extends JTabbedPane{
 
-    JPopupMenu popupMenu;
-    JMenuItem menuItem;
+    private JPopupMenu popupMenu;
+    private JMenuItem menuItem;
 
     public TabbedPanelCreate() {
 

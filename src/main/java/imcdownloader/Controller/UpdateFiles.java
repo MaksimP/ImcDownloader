@@ -13,11 +13,11 @@ import java.io.*;
 
 public class UpdateFiles {
 
-    Workbook rdWorkBook;
-    Workbook wrWorkBook;
-    Sheet rdSheet;
-    Sheet wrSheet;
-    POIFSFileSystem inStream;
+    private Workbook rdWorkBook;
+    private Workbook wrWorkBook;
+    private Sheet rdSheet;
+    private Sheet wrSheet;
+    private POIFSFileSystem inStream;
 
     public UpdateFiles(File temp) throws IOException {
         inStream = new POIFSFileSystem(new FileInputStream(temp));

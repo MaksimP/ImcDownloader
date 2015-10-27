@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 public class MenuBarCreate extends JMenuBar {
 
-    JMenu menuFile;
-    JMenu menuOptions;
-    JMenu menuHelp;
+    private JMenu menuFile;
+    private JMenu menuOptions;
+    private JMenu menuHelp;
 
-    JMenuItem menuItemClose;
-    JMenuItem menuItemReload;
-    JMenuItem menuItemAbout;
+    private JMenuItem menuItemClose;
+    private JMenuItem menuItemReload;
+    private JMenuItem menuItemAbout;
 
     public MenuBarCreate() {
 

@@ -5,12 +5,12 @@ import java.awt.*;
 
 public class CreateGUI extends JFrame{
 
-    ToolBarCreate toolBar;
-    TreePanelCreate treePanelCreate;
-    MenuBarCreate menuBarCreate;
-    TabbedPanelCreate tabbedPanelCreate;
-    LineStatusCreate lineStatusCreate;
-    JSplitPane splitPane;
+    private ToolBarCreate toolBar;
+    private TreePanelCreate treePanelCreate;
+    private MenuBarCreate menuBarCreate;
+    private TabbedPanelCreate tabbedPanelCreate;
+    private LineStatusCreate lineStatusCreate;
+    private JSplitPane splitPane;
 
     public CreateGUI() {
 

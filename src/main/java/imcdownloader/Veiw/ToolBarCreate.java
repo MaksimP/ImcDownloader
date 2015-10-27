@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 public class ToolBarCreate extends JToolBar{
 
-    JButton buttonReload;
-    JButton buttonOpen;
-    JButton buttonFind;
-    JTextField textFieldFind;
+    private JButton buttonReload;
+    private JButton buttonOpen;
+    private JButton buttonFind;
+    private JTextField textFieldFind;
 
     public ToolBarCreate() {
         ImageIcon imageReload = new ImageIcon(ToolBarCreate.class.getResource("/arrow_refresh.png"));

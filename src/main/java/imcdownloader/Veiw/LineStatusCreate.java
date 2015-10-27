@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class LineStatusCreate extends JPanel {
 
-    JLabel statusLine;
+    private JLabel statusLine;
 
     public LineStatusCreate() {
 
